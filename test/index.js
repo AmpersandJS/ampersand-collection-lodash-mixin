@@ -2,6 +2,7 @@ var test = require('tape');
 var AmpersandState = require('ampersand-state');
 var AmpersandCollection = require('ampersand-collection');
 var AmpersandLodashMixins = require('../ampersand-collection-lodash-mixin');
+var without = require('lodash.without')
 var collection;
 
 var Model = AmpersandState.extend({
@@ -31,6 +32,30 @@ test('extended collection contains all necessary methods', function (t) {
     });
     t.end();
 });
+
+test('methods should be callable on the collection instance', function (t) {
+    var collection = new Collection([
+        { id: 1, foo: 'baz', bar: 'baz' },
+        { id: 2, foo: 'baz', bar: 'baz' },
+    ]);
+    without(methods, 'groupBy', 'countBy', 'sortBy', 'indexBy').forEach(function (method) {
+        t.doesNotThrow(function () { collection[method]() }, method + ' should be callable')
+    });
+    t.end();
+})
+
+test('groupBy, countBy, sortBy, indexBy should be callable on the collection instance', function (t) {
+    var collection = new Collection([
+        { id: 1, foo: 'baz', bar: 'baz' },
+        { id: 2, foo: 'baz', bar: 'baz' },
+    ]);
+    ['groupBy', 'countBy', 'sortBy', 'indexBy'].forEach(function (method) {
+        t.doesNotThrow(function () {
+            collection[method]('foo');
+        }, method + ' should be callable');
+    });
+    t.end();
+})
 
 test('`where` and `findWhere` methods should filter a collection based on a given attributes', function (t) {
     var collection = new Collection([

@@ -1,4 +1,5 @@
 /*$AMPERSAND_VERSION*/
+var isFunction = require('lodash.isfunction')
 var _ = {
     countBy: require('lodash.countby'),
     difference: require('lodash.difference'),
@@ -7,7 +8,6 @@ var _ = {
     every: require('lodash.every'),
     filter: require('lodash.filter'),
     find: require('lodash.find'),
-    findWhere: require('lodash.findwhere'),
     first: require('lodash.first'),
     forEach: require('lodash.foreach'),
     groupBy: require('lodash.groupby'),
@@ -33,14 +33,13 @@ var _ = {
     some: require('lodash.some'),
     sortBy: require('lodash.sortby'),
     take: require('lodash.take'),
-    where: require('lodash.where'),
     without: require('lodash.without')
 };
 var slice = [].slice;
 var mixins = {};
 
 
-// Underscore methods that we want to implement on the Collection.
+// lodash methods that we want to implement on the Collection.
 var methods = ['forEach', 'each', 'map', 'reduce', 'reduceRight', 'find',
     'filter', 'reject', 'every', 'some', 'includes', 'invoke',
     'max', 'min', 'size', 'first', 'take', 'initial', 'rest',
@@ -48,7 +47,7 @@ var methods = ['forEach', 'each', 'map', 'reduce', 'reduceRight', 'find',
     'lastIndexOf', 'isEmpty', 'sample', 'partition'
 ];
 
-// Mix in each Underscore method as a proxy to `Collection#models`.
+// Mix in each lodash method as a proxy to `Collection#models`.
 _.each(methods, function (method) {
     if (!_[method]) return;
     mixins[method] = function () {
@@ -58,14 +57,14 @@ _.each(methods, function (method) {
     };
 });
 
-// Underscore methods that take a property name as an argument.
+// lodash methods that take a property name as an argument.
 var attributeMethods = ['groupBy', 'countBy', 'sortBy', 'indexBy'];
 
 // Use attributes instead of properties.
 _.each(attributeMethods, function (method) {
     if (!_[method]) return;
     mixins[method] = function (value, context) {
-        var iterator = _.isFunction(value) ? value : function (model) {
+        var iterator = isFunction(value) ? value : function (model) {
             return model.get ? model.get(value) : model[value];
         };
         return _[method](this.models, iterator, context);
