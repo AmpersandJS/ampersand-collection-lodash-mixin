@@ -1,4 +1,3 @@
-var _ = require('underscore');
 var test = require('tape');
 var AmpersandState = require('ampersand-state');
 var AmpersandCollection = require('ampersand-collection');
@@ -22,12 +21,12 @@ var methods = ['forEach', 'each', 'map', 'collect', 'reduce', 'foldl',
     'reject', 'every', 'all', 'some', 'any', 'include', 'contains', 'invoke',
     'max', 'min', 'toArray', 'size', 'first', 'head', 'take', 'initial', 'rest',
     'tail', 'drop', 'last', 'without', 'difference', 'indexOf', 'shuffle',
-    'lastIndexOf', 'isEmpty', 'chain', 'sample', 'partition',
+    'lastIndexOf', 'isEmpty', 'sample', 'partition',
     'groupBy', 'countBy', 'sortBy', 'indexBy'
 ];
 
 test('extended collection contains all necessary methods', function (t) {
-    _.each(methods, function (method) {
+    methods.forEach(function (method) {
         t.ok(Collection.prototype[method], 'extended collection contains ' + method + ' method');
     });
     t.end();
