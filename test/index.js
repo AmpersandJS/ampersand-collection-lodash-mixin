@@ -1,7 +1,7 @@
 var test = require('tape');
 var AmpersandState = require('ampersand-state');
 var AmpersandCollection = require('ampersand-collection');
-var AmpersandUnderscoreMixins = require('../ampersand-collection-underscore-mixin');
+var AmpersandLodashMixins = require('../ampersand-collection-lodash-mixin');
 var collection;
 
 var Model = AmpersandState.extend({
@@ -12,7 +12,7 @@ var Model = AmpersandState.extend({
     }
 });
 
-var Collection = AmpersandCollection.extend(AmpersandUnderscoreMixins, {
+var Collection = AmpersandCollection.extend(AmpersandLodashMixins, {
     model: Model
 });
 
