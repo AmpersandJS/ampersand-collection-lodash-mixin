@@ -52,14 +52,14 @@
   "devDependencies": {
     "ampersand-collection": "^1.0.0",
     "ampersand-state": "^4.3.2",
-    "browserify": "^5.11.0",
+    "browserify": "^9.0.4",
     "jshint": "^2.5.5",
     "phantomjs": "^1.9.7-15",
-    "precommit-hook": "^1.0.7",
-    "run-browser": "~1.2.0",
-    "tap-spec": "^0.2.1",
-    "tape": "~2.12.1",
-    "tape-run": "^0.3.0"
+    "precommit-hook": "^2.0.1",
+    "run-browser": "^2.0.2",
+    "tap-spec": "^2.2.2",
+    "tape": "^3.5.0",
+    "tape-run": "^1.0.0"
   },
   "homepage": "https://github.com/ampersandjs/ampersand-collection-lodash-mixin",
   "keywords": [
@@ -76,9 +76,10 @@
   },
   "scripts": {
     "test": "browserify test/index.js | tape-run | tap-spec",
-    "validate": "jshint .",
+    "lint": "jshint .",
     "start": "run-browser test/index.js"
   },
+  "pre-commit": ["lint", "test"],
   "testling": {
     "files": "test/*.js",
     "browsers": [
