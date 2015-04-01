@@ -9,6 +9,15 @@ A mixin for extending ampersand-collection with a bunch of lodash methods.
 
 Out of the box, ampersand-collections proxy the [ES5 iteration methods already](http://ampersandjs.com/docs/#ampersand-collection-proxied-es5-array-methods-9) so you don't _have_ to use this mixin, but if you want lodash methods, or better browser support, you can use this.
 
+This mixin adds the following lodash methods:
+
+```
+countBy, difference, drop, each, every, filter, find, findWhere, first,
+forEach, groupBy, includes, indexBy, indexOf, initial, invoke, isEmpty, last, 
+lastIndexOf, map, max, min, partition, reduce, reduceRight, reject, rest, 
+sample, shuffle, size, some, sortBy, take, where, without
+```
+
 ## install
 
 ```
