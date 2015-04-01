@@ -16,11 +16,11 @@ var Collection = AmpersandCollection.extend(AmpersandLodashMixins, {
     model: Model
 });
 
-var methods = ['forEach', 'each', 'map', 'collect', 'reduce', 'foldl',
-    'inject', 'reduceRight', 'foldr', 'find', 'detect', 'filter', 'select',
-    'reject', 'every', 'all', 'some', 'any', 'include', 'contains', 'invoke',
-    'max', 'min', 'toArray', 'size', 'first', 'head', 'take', 'initial', 'rest',
-    'tail', 'drop', 'last', 'without', 'difference', 'indexOf', 'shuffle',
+var methods = ['forEach', 'each', 'map', 'reduce',
+    'reduceRight', 'find', 'filter',
+    'reject', 'every', 'some', 'includes', 'invoke',
+    'max', 'min', 'size', 'first', 'take', 'initial', 'rest',
+    'drop', 'last', 'without', 'difference', 'indexOf', 'shuffle',
     'lastIndexOf', 'isEmpty', 'sample', 'partition',
     'groupBy', 'countBy', 'sortBy', 'indexBy'
 ];

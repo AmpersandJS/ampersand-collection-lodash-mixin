@@ -1,11 +1,6 @@
 /*$AMPERSAND_VERSION*/
 var _ = {
-    all: require('lodash.every'),
-    any: require('lodash.some'),
-    collect: require('lodash.map'),
-    contains: require('lodash.includes'),
     countBy: require('lodash.countby'),
-    detect: require('lodash.find'),
     difference: require('lodash.difference'),
     drop: require('lodash.drop'),
     each: require('lodash.foreach'),
@@ -14,17 +9,12 @@ var _ = {
     find: require('lodash.find'),
     findWhere: require('lodash.findwhere'),
     first: require('lodash.first'),
-    foldl: require('lodash.reduce'),
-    foldr: require('lodash.reduceright'),
     forEach: require('lodash.foreach'),
     groupBy: require('lodash.groupby'),
-    head: require('lodash.first'),
     includes: require('lodash.includes'),
-    include: require('lodash.includes'),
     indexBy: require('lodash.indexby'),
     indexOf: require('lodash.indexof'),
     initial: require('lodash.initial'),
-    inject: require('lodash.reduce'),
     invoke: require('lodash.invoke'),
     isEmpty: require('lodash.isempty'),
     last: require('lodash.last'),
@@ -38,14 +28,11 @@ var _ = {
     reject: require('lodash.reject'),
     rest: require('lodash.rest'),
     sample: require('lodash.sample'),
-    select: require('lodash.filter'),
     shuffle: require('lodash.shuffle'),
     size: require('lodash.size'),
     some: require('lodash.some'),
     sortBy: require('lodash.sortby'),
-    tail: require('lodash.rest'),
     take: require('lodash.take'),
-    toArray: require('lodash.toarray'),
     where: require('lodash.where'),
     without: require('lodash.without')
 };
@@ -54,11 +41,10 @@ var mixins = {};
 
 
 // Underscore methods that we want to implement on the Collection.
-var methods = ['forEach', 'each', 'map', 'collect', 'reduce', 'foldl',
-    'inject', 'reduceRight', 'foldr', 'find', 'detect', 'filter', 'select',
-    'reject', 'every', 'all', 'some', 'any', 'include', 'contains', 'invoke',
-    'max', 'min', 'toArray', 'size', 'first', 'head', 'take', 'initial', 'rest',
-    'tail', 'drop', 'last', 'without', 'difference', 'indexOf', 'shuffle',
+var methods = ['forEach', 'each', 'map', 'reduce', 'reduceRight', 'find',
+    'filter', 'reject', 'every', 'some', 'includes', 'invoke',
+    'max', 'min', 'size', 'first', 'take', 'initial', 'rest',
+    'drop', 'last', 'without', 'difference', 'indexOf', 'shuffle',
     'lastIndexOf', 'isEmpty', 'sample', 'partition'
 ];
 

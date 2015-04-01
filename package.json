@@ -45,7 +45,6 @@
     "lodash.some": "^3.2.0",
     "lodash.sortby": "^3.1.0",
     "lodash.take": "^3.0.0",
-    "lodash.toarray": "^3.0.0",
     "lodash.where": "^3.1.0",
     "lodash.without": "^3.1.0"
   },
@@ -79,7 +78,10 @@
     "lint": "jshint .",
     "start": "run-browser test/index.js"
   },
-  "pre-commit": ["lint", "test"],
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "testling": {
     "files": "test/*.js",
     "browsers": [
