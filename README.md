@@ -1,5 +1,7 @@
 # ampersand-collection-lodash-mixin
 
+Lead Maintainer: [Clemens Stolle](https://github.com/klaemo)
+
 A mixin for extending ampersand-collection with a bunch of lodash methods.
 
 ~~If you're using an [ampersand-rest-collection](http://ampersandjs.com/docs/#ampersand-rest-collection) this is already mixed in for you.~~
