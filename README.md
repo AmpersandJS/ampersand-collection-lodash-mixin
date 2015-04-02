@@ -48,6 +48,8 @@ module.exports = Collection.extend(lodashMixin, {
 All credit for underscore and this approach in backbone goes to Jeremy Ashkenas and the rest of the Backbone and Underscore authors.
 All credit for lodash goes to John-David Dalton.
 
+Big thanks to @STRML who generously gave us this module name on npm. If you're interested in his version, it's still there public, you can just keep using version `1.0.2`.
+
 If you like this follow [@HenrikJoreteg](http://twitter.com/henrikjoreteg) and/or [@klaemo](http://twitter.com/klaemo) on twitter.
 
 ## license
