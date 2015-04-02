@@ -72,7 +72,8 @@
   "scripts": {
     "test": "browserify test/index.js | tape-run | tap-spec",
     "lint": "jshint .",
-    "start": "run-browser test/index.js"
+    "start": "run-browser test/index.js",
+    "list": "node -e \"console.log(Object.keys(require('./ampersand-collection-lodash-mixin')).sort().join(', '))\""
   },
   "pre-commit": [
     "lint",

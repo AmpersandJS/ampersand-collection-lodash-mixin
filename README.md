@@ -12,11 +12,13 @@ Out of the box, ampersand-collections proxy the [ES5 iteration methods already](
 This mixin adds the following lodash methods:
 
 ```
-countBy, difference, drop, each, every, filter, find, findWhere, first,
+countBy, difference, drop, each, every, filter, find, findWhere, first, 
 forEach, groupBy, includes, indexBy, indexOf, initial, invoke, isEmpty, last, 
-lastIndexOf, map, max, min, partition, reduce, reduceRight, reject, rest, 
-sample, shuffle, size, some, sortBy, take, where, without
+lastIndexOf, map, max, min, partition, pluck, reduce, reduceRight, reject, 
+rest, sample, shuffle, size, some, sortBy, take, where, without
 ```
+
+It weighs in at about `7.5kb` gzipped.
 
 ## install
 
@@ -48,7 +50,7 @@ module.exports = Collection.extend(lodashMixin, {
 All credit for underscore and this approach in backbone goes to Jeremy Ashkenas and the rest of the Backbone and Underscore authors.
 All credit for lodash goes to John-David Dalton.
 
-Big thanks to @STRML who generously gave us this module name on npm. If you're interested in his version, it's still there public, you can just keep using version `1.0.2`.
+Big thanks to [@STRML](https://github.com/STRML) who generously gave us this module name on npm. If you're interested in his version, it's still there public, you can just keep using version `1.0.2`.
 
 If you like this follow [@HenrikJoreteg](http://twitter.com/henrikjoreteg) and/or [@klaemo](http://twitter.com/klaemo) on twitter.
 
