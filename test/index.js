@@ -2,6 +2,7 @@ var test = require('tape');
 var AmpersandState = require('ampersand-state');
 var AmpersandCollection = require('ampersand-collection');
 var AmpersandLodashMixins = require('../ampersand-collection-lodash-mixin');
+var without = require('lodash.without');
 var collection;
 
 var Model = AmpersandState.extend({
@@ -28,6 +29,30 @@ var methods = ['forEach', 'each', 'map', 'reduce',
 test('extended collection contains all necessary methods', function (t) {
     methods.forEach(function (method) {
         t.ok(Collection.prototype[method], 'extended collection contains ' + method + ' method');
+    });
+    t.end();
+});
+
+test('methods should be callable on the collection instance', function (t) {
+    var collection = new Collection([
+        { id: 1, foo: 'baz', bar: 'baz' },
+        { id: 2, foo: 'baz', bar: 'baz' },
+    ]);
+    without(methods, 'groupBy', 'countBy', 'sortBy', 'indexBy').forEach(function (method) {
+        t.doesNotThrow(function () { collection[method](); }, method + ' should be callable');
+    });
+    t.end();
+});
+
+test('groupBy, countBy, sortBy, indexBy should be callable on the collection instance', function (t) {
+    var collection = new Collection([
+        { id: 1, foo: 'baz', bar: 'baz' },
+        { id: 2, foo: 'baz', bar: 'baz' },
+    ]);
+    ['groupBy', 'countBy', 'sortBy', 'indexBy'].forEach(function (method) {
+        t.doesNotThrow(function () {
+            collection[method]('foo');
+        }, method + ' should be callable');
     });
     t.end();
 });
@@ -76,10 +101,55 @@ test('`pluck` method should get attribute value from each model', function (t) {
     ]);
 
     var foo = collection.pluck('foo');
-    t.deepEqual(foo, ['baz', 'qux']), 'verify that returned attribute values are correct';
+    t.deepEqual(foo, ['baz', 'qux'], 'verify that returned attribute values are correct');
 
     var bar = collection.pluck('bar');
     t.deepEqual(bar, ['qux', 'baz'], 'verify that returned attribute values are correct');
+
+    t.end();
+});
+
+test('`first` method should return first model', function (t) {
+    var collection = new Collection([
+        { id: 1, foo: 'baz', bar: 'qux' },
+        { id: 2, foo: 'qux', bar: 'baz' }
+    ]);
+
+    var first = collection.first().toJSON();
+    t.deepEqual(first, { id: 1, foo: 'baz', bar: 'qux' }, 'verify that returned attribute values are correct');
+
+    collection = new Collection();
+    t.strictEqual(collection.first(), undefined, 'verify that returned attribute values are correct');
+
+    t.end();
+});
+
+test('`last` method should return last model', function (t) {
+    var collection = new Collection([
+        { id: 1, foo: 'baz', bar: 'qux' },
+        { id: 2, foo: 'qux', bar: 'baz' }
+    ]);
+
+    var last = collection.last().toJSON();
+    t.deepEqual(last, { id: 2, foo: 'qux', bar: 'baz' }, 'verify that returned attribute values are correct');
+
+    collection = new Collection();
+    t.strictEqual(collection.last(), undefined, 'verify that returned attribute values are correct');
+
+    t.end();
+});
+
+test('`size` method should return size of collection', function (t) {
+    var collection = new Collection([
+        { id: 1, foo: 'baz', bar: 'qux' },
+        { id: 2, foo: 'qux', bar: 'baz' }
+    ]);
+
+    var foo = collection.pluck('foo');
+    t.strictEqual(collection.size(), 2, 'verify that returned size is correct');
+
+    collection = new Collection();
+    t.strictEqual(collection.size(), 0, 'verify that returned size is correct');
 
     t.end();
 });

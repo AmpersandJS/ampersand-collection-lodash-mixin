@@ -1,4 +1,5 @@
 /*$AMPERSAND_VERSION*/
+var isFunction = require('lodash.isfunction');
 var _ = {
     countBy: require('lodash.countby'),
     difference: require('lodash.difference'),
@@ -7,8 +8,6 @@ var _ = {
     every: require('lodash.every'),
     filter: require('lodash.filter'),
     find: require('lodash.find'),
-    findWhere: require('lodash.findwhere'),
-    first: require('lodash.first'),
     forEach: require('lodash.foreach'),
     groupBy: require('lodash.groupby'),
     includes: require('lodash.includes'),
@@ -17,7 +16,6 @@ var _ = {
     initial: require('lodash.initial'),
     invoke: require('lodash.invoke'),
     isEmpty: require('lodash.isempty'),
-    last: require('lodash.last'),
     lastIndexOf: require('lodash.lastindexof'),
     map: require('lodash.map'),
     max: require('lodash.max'),
@@ -29,26 +27,23 @@ var _ = {
     rest: require('lodash.rest'),
     sample: require('lodash.sample'),
     shuffle: require('lodash.shuffle'),
-    size: require('lodash.size'),
     some: require('lodash.some'),
     sortBy: require('lodash.sortby'),
     take: require('lodash.take'),
-    where: require('lodash.where'),
     without: require('lodash.without')
 };
 var slice = [].slice;
 var mixins = {};
 
 
-// Underscore methods that we want to implement on the Collection.
+// lodash methods that we want to implement on the Collection.
 var methods = ['forEach', 'each', 'map', 'reduce', 'reduceRight', 'find',
-    'filter', 'reject', 'every', 'some', 'includes', 'invoke',
-    'max', 'min', 'size', 'first', 'take', 'initial', 'rest',
-    'drop', 'last', 'without', 'difference', 'indexOf', 'shuffle',
+    'filter', 'reject', 'every', 'some', 'includes', 'invoke', 'max', 'min',
+    'take', 'initial', 'rest', 'drop', 'without', 'difference', 'indexOf', 'shuffle',
     'lastIndexOf', 'isEmpty', 'sample', 'partition'
 ];
 
-// Mix in each Underscore method as a proxy to `Collection#models`.
+// Mix in each lodash method as a proxy to `Collection#models`.
 _.each(methods, function (method) {
     if (!_[method]) return;
     mixins[method] = function () {
@@ -58,14 +53,14 @@ _.each(methods, function (method) {
     };
 });
 
-// Underscore methods that take a property name as an argument.
+// lodash methods that take a property name as an argument.
 var attributeMethods = ['groupBy', 'countBy', 'sortBy', 'indexBy'];
 
 // Use attributes instead of properties.
 _.each(attributeMethods, function (method) {
     if (!_[method]) return;
     mixins[method] = function (value, context) {
-        var iterator = _.isFunction(value) ? value : function (model) {
+        var iterator = isFunction(value) ? value : function (model) {
             return model.get ? model.get(value) : model[value];
         };
         return _[method](this.models, iterator, context);
@@ -95,6 +90,23 @@ mixins.findWhere = function (attrs) {
 // Plucks an attribute from each model in the collection.
 mixins.pluck = function (attr) {
     return _.invoke(this.models, 'get', attr);
+};
+
+// We implement the following trivial methods ourselves.
+
+// Gets first model
+mixins.first = function () {
+    return this.models[0];
+};
+
+// Gets last model
+mixins.last = function () {
+    return this.models[this.models.length - 1];
+};
+
+// Gets size of collection
+mixins.size = function () {
+    return this.models.length;
 };
 
 module.exports = mixins;
