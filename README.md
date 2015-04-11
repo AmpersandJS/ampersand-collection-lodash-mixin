@@ -4,8 +4,7 @@ Lead Maintainer: [Clemens Stolle](https://github.com/klaemo)
 
 A mixin for extending ampersand-collection with a bunch of lodash methods.
 
-~~If you're using an [ampersand-rest-collection](http://ampersandjs.com/docs/#ampersand-rest-collection) this is already mixed in for you.~~
-(Not yet, but maybe soon? :D)
+If you're using an [ampersand-rest-collection](http://ampersandjs.com/docs/#ampersand-rest-collection) this is already mixed in for you.
 
 Out of the box, ampersand-collections proxy the [ES5 iteration methods already](http://ampersandjs.com/docs/#ampersand-collection-proxied-es5-array-methods-9) so you don't _have_ to use this mixin, but if you want lodash methods, or better browser support, you can use this.
 
