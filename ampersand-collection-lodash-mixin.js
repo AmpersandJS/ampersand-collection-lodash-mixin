@@ -1,6 +1,7 @@
 /*$AMPERSAND_VERSION*/
 var isFunction = require('lodash.isfunction');
 var _ = {
+    contains: require('lodash.includes'),
     countBy: require('lodash.countby'),
     difference: require('lodash.difference'),
     drop: require('lodash.drop'),
