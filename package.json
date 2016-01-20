@@ -47,14 +47,11 @@
   "devDependencies": {
     "ampersand-collection": "^1.0.0",
     "ampersand-state": "^4.3.2",
-    "browserify": "^9.0.4",
     "jshint": "^2.5.5",
-    "phantomjs": "^1.9.7-15",
+    "phantomjs": "^1.9.19",
     "precommit-hook": "^2.0.1",
-    "run-browser": "^2.0.2",
-    "tap-spec": "^2.2.2",
     "tape": "^3.5.0",
-    "tape-run": "^1.0.0"
+    "zuul": "^3.9.0"
   },
   "homepage": "https://github.com/ampersandjs/ampersand-collection-lodash-mixin",
   "keywords": [
@@ -70,29 +67,14 @@
     "url": "git://github.com/ampersandjs/ampersand-collection-lodash-mixin"
   },
   "scripts": {
-    "test": "browserify test/index.js | tape-run | tap-spec",
+    "start": "zuul --local -- test/index.js",
+    "test": "zuul --phantom -- test/index.js",
+    "test-ci": "zuul -- test/index.js",
     "lint": "jshint .",
-    "start": "run-browser test/index.js",
     "list": "node -e \"console.log(Object.keys(require('./ampersand-collection-lodash-mixin')).sort().join(', '))\""
   },
   "pre-commit": [
     "lint",
     "test"
-  ],
-  "testling": {
-    "files": "test/*.js",
-    "browsers": [
-      "ie/9..latest",
-      "firefox/17..latest",
-      "firefox/nightly",
-      "chrome/22..latest",
-      "chrome/canary",
-      "opera/12..latest",
-      "opera/next",
-      "safari/5.1..latest",
-      "ipad/6.0..latest",
-      "iphone/6.0..latest",
-      "android-browser/4.2..latest"
-    ]
-  }
+  ]
 }
