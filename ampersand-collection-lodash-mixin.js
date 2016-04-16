@@ -14,7 +14,8 @@ var _ = {
     keyBy: require('lodash/keyBy'),
     indexOf: require('lodash/indexof'),
     initial: require('lodash/initial'),
-    invoke: require('lodash/invoke'),
+    invoke:  require('lodash/invoke'),
+    invokeMap: require('lodash/invokeMap'),
     isEmpty: require('lodash/isempty'),
     lastIndexOf: require('lodash/lastindexof'),
     map: require('lodash/map'),
@@ -38,7 +39,7 @@ var mixins = {};
 
 // lodash methods that we want to implement on the Collection.
 var methods = ['forEach', 'each', 'map', 'reduce', 'reduceRight', 'find',
-    'filter', 'reject', 'every', 'some', 'includes', 'invoke', 'max', 'min',
+    'filter', 'reject', 'every', 'some', 'includes', 'invoke', 'invokeMap', 'max', 'min',
     'take', 'initial', 'tail', 'drop', 'without', 'difference', 'indexOf', 'shuffle',
     'lastIndexOf', 'isEmpty', 'sample', 'partition'
 ];
@@ -89,7 +90,7 @@ mixins.findWhere = function (attrs) {
 
 // Plucks an attribute from each model in the collection.
 mixins.pluck = function (attr) {
-    return _.invoke(this.models, 'get', attr);
+    return _.invokeMap(this.models, 'get', attr);
 };
 
 // We implement the following trivial methods ourselves.
