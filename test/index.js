@@ -20,7 +20,7 @@ var Collection = AmpersandCollection.extend(AmpersandLodashMixins, {
 var methods = ['forEach', 'each', 'map', 'reduce',
     'reduceRight', 'find', 'filter',
     'reject', 'every', 'some', 'includes', 'invoke',
-    'max', 'min', 'size', 'first', 'take', 'initial', 'rest',
+    'max', 'min', 'size', 'first', 'take', 'initial', 'tail',
     'drop', 'last', 'without', 'difference', 'indexOf', 'shuffle',
     'lastIndexOf', 'isEmpty', 'sample', 'partition',
     'groupBy', 'countBy', 'sortBy', 'keyBy'

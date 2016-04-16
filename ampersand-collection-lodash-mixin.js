@@ -24,11 +24,11 @@ var _ = {
     reduce: require('lodash/reduce'),
     reduceRight: require('lodash/reduceright'),
     reject: require('lodash/reject'),
-    rest: require('lodash/rest'),
     sample: require('lodash/sample'),
     shuffle: require('lodash/shuffle'),
     some: require('lodash/some'),
     sortBy: require('lodash/sortby'),
+    tail: require('lodash/tail'),
     take: require('lodash/take'),
     without: require('lodash/without')
 };
@@ -39,7 +39,7 @@ var mixins = {};
 // lodash methods that we want to implement on the Collection.
 var methods = ['forEach', 'each', 'map', 'reduce', 'reduceRight', 'find',
     'filter', 'reject', 'every', 'some', 'includes', 'invoke', 'max', 'min',
-    'take', 'initial', 'rest', 'drop', 'without', 'difference', 'indexOf', 'shuffle',
+    'take', 'initial', 'tail', 'drop', 'without', 'difference', 'indexOf', 'shuffle',
     'lastIndexOf', 'isEmpty', 'sample', 'partition'
 ];
 
