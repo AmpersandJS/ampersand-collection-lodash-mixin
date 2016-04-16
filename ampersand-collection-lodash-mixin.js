@@ -11,7 +11,7 @@ var _ = {
     forEach: require('lodash/foreach'),
     groupBy: require('lodash/groupby'),
     includes: require('lodash/includes'),
-    indexBy: require('lodash/indexBy'),
+    keyBy: require('lodash/keyBy'),
     indexOf: require('lodash/indexof'),
     initial: require('lodash/initial'),
     invoke: require('lodash/invoke'),
@@ -54,7 +54,7 @@ _.each(methods, function (method) {
 });
 
 // lodash methods that take a property name as an argument.
-var attributeMethods = ['groupBy', 'countBy', 'sortBy', 'indexBy'];
+var attributeMethods = ['groupBy', 'countBy', 'sortBy', 'keyBy'];
 
 // Use attributes instead of properties.
 _.each(attributeMethods, function (method) {
