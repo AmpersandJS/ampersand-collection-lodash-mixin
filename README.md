@@ -11,10 +11,10 @@ Out of the box, ampersand-collections proxy the [ES5 iteration methods already](
 This mixin adds the following lodash methods:
 
 ```
-countBy, difference, drop, each, every, filter, find, findWhere, first, 
-forEach, groupBy, includes, indexBy, indexOf, initial, invoke, isEmpty, last, 
-lastIndexOf, map, max, min, partition, pluck, reduce, reduceRight, reject, 
-rest, sample, shuffle, size, some, sortBy, take, where, without
+countBy, difference, drop, each, every, filter, find, findWhere, first,
+forEach, groupBy, includes, indexOf, initial, invoke, invokeMap, isEmpty, keyBy, last,
+lastIndexOf, map, max, min, partition, pluck, reduce, reduceRight, reject,
+sample, shuffle, size, some, sortBy, take, tail, where, without
 ```
 
 It weighs in at about `7.5kb` gzipped.
@@ -34,7 +34,7 @@ var lodashMixin = require('ampersand-collection-lodash-mixin');
 
 module.exports = Collection.extend(lodashMixin, {
     sampleMethod: function () {
-        // now we've got lodash methods 
+        // now we've got lodash methods
         // we can call that are applied to models
         // in the collection.
         this.filter( ... );
@@ -56,4 +56,3 @@ If you like this follow [@HenrikJoreteg](http://twitter.com/henrikjoreteg) and/o
 ## license
 
 MIT
-
