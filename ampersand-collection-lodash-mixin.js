@@ -1,36 +1,37 @@
 /*$AMPERSAND_VERSION*/
-var isFunction = require('lodash.isfunction');
+var isFunction = require('lodash/isFunction');
 var _ = {
-    countBy: require('lodash.countby'),
-    difference: require('lodash.difference'),
-    drop: require('lodash.drop'),
-    each: require('lodash.foreach'),
-    every: require('lodash.every'),
-    filter: require('lodash.filter'),
-    find: require('lodash.find'),
-    forEach: require('lodash.foreach'),
-    groupBy: require('lodash.groupby'),
-    includes: require('lodash.includes'),
-    indexBy: require('lodash.indexby'),
-    indexOf: require('lodash.indexof'),
-    initial: require('lodash.initial'),
-    invoke: require('lodash.invoke'),
-    isEmpty: require('lodash.isempty'),
-    lastIndexOf: require('lodash.lastindexof'),
-    map: require('lodash.map'),
-    max: require('lodash.max'),
-    min: require('lodash.min'),
-    partition: require('lodash.partition'),
-    reduce: require('lodash.reduce'),
-    reduceRight: require('lodash.reduceright'),
-    reject: require('lodash.reject'),
-    rest: require('lodash.rest'),
-    sample: require('lodash.sample'),
-    shuffle: require('lodash.shuffle'),
-    some: require('lodash.some'),
-    sortBy: require('lodash.sortby'),
-    take: require('lodash.take'),
-    without: require('lodash.without')
+    countBy: require('lodash/countBy'),
+    difference: require('lodash/difference'),
+    drop: require('lodash/drop'),
+    each: require('lodash/forEach'),
+    every: require('lodash/every'),
+    filter: require('lodash/filter'),
+    find: require('lodash/find'),
+    forEach: require('lodash/forEach'),
+    groupBy: require('lodash/groupBy'),
+    includes: require('lodash/includes'),
+    keyBy: require('lodash/keyBy'),
+    indexOf: require('lodash/indexOf'),
+    initial: require('lodash/initial'),
+    invoke:  require('lodash/invoke'),
+    invokeMap: require('lodash/invokeMap'),
+    isEmpty: require('lodash/isEmpty'),
+    lastIndexOf: require('lodash/lastIndexOf'),
+    map: require('lodash/map'),
+    max: require('lodash/max'),
+    min: require('lodash/min'),
+    partition: require('lodash/partition'),
+    reduce: require('lodash/reduce'),
+    reduceRight: require('lodash/reduceRight'),
+    reject: require('lodash/reject'),
+    sample: require('lodash/sample'),
+    shuffle: require('lodash/shuffle'),
+    some: require('lodash/some'),
+    sortBy: require('lodash/sortBy'),
+    tail: require('lodash/tail'),
+    take: require('lodash/take'),
+    without: require('lodash/without')
 };
 var slice = [].slice;
 var mixins = {};
@@ -38,8 +39,8 @@ var mixins = {};
 
 // lodash methods that we want to implement on the Collection.
 var methods = ['forEach', 'each', 'map', 'reduce', 'reduceRight', 'find',
-    'filter', 'reject', 'every', 'some', 'includes', 'invoke', 'max', 'min',
-    'take', 'initial', 'rest', 'drop', 'without', 'difference', 'indexOf', 'shuffle',
+    'filter', 'reject', 'every', 'some', 'includes', 'invoke', 'invokeMap', 'max', 'min',
+    'take', 'initial', 'tail', 'drop', 'without', 'difference', 'indexOf', 'shuffle',
     'lastIndexOf', 'isEmpty', 'sample', 'partition'
 ];
 
@@ -54,7 +55,7 @@ _.each(methods, function (method) {
 });
 
 // lodash methods that take a property name as an argument.
-var attributeMethods = ['groupBy', 'countBy', 'sortBy', 'indexBy'];
+var attributeMethods = ['groupBy', 'countBy', 'sortBy', 'keyBy'];
 
 // Use attributes instead of properties.
 _.each(attributeMethods, function (method) {
@@ -89,7 +90,7 @@ mixins.findWhere = function (attrs) {
 
 // Plucks an attribute from each model in the collection.
 mixins.pluck = function (attr) {
-    return _.invoke(this.models, 'get', attr);
+    return _.invokeMap(this.models, 'get', attr);
 };
 
 // We implement the following trivial methods ourselves.
