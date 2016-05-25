@@ -2,7 +2,7 @@ var test = require('tape');
 var AmpersandState = require('ampersand-state');
 var AmpersandCollection = require('ampersand-collection');
 var AmpersandLodashMixins = require('../ampersand-collection-lodash-mixin');
-var without = require('lodash/without');
+var without = require('lodash.without');
 var collection;
 
 var Model = AmpersandState.extend({
