@@ -19,11 +19,11 @@ var Collection = AmpersandCollection.extend(AmpersandLodashMixins, {
 
 var methods = ['forEach', 'each', 'map', 'reduce',
     'reduceRight', 'find', 'filter',
-    'reject', 'every', 'some', 'includes', 'invoke',
-    'max', 'min', 'size', 'first', 'take', 'initial', 'rest',
+    'reject', 'every', 'some', 'includes', 'invoke', 'invokeMap',
+    'max', 'min', 'size', 'first', 'take', 'initial', 'rest', 'tail',
     'drop', 'last', 'without', 'difference', 'indexOf', 'shuffle',
     'lastIndexOf', 'isEmpty', 'sample', 'partition',
-    'groupBy', 'countBy', 'sortBy', 'indexBy'
+    'groupBy', 'countBy', 'sortBy', 'indexBy', 'keyBy'
 ];
 
 test('extended collection contains all necessary methods', function (t) {
@@ -38,18 +38,18 @@ test('methods should be callable on the collection instance', function (t) {
         { id: 1, foo: 'baz', bar: 'baz' },
         { id: 2, foo: 'baz', bar: 'baz' },
     ]);
-    without(methods, 'groupBy', 'countBy', 'sortBy', 'indexBy').forEach(function (method) {
+    without(methods, 'groupBy', 'countBy', 'sortBy', 'indexBy', 'keyBy').forEach(function (method) {
         t.doesNotThrow(function () { collection[method](); }, method + ' should be callable');
     });
     t.end();
 });
 
-test('groupBy, countBy, sortBy, indexBy should be callable on the collection instance', function (t) {
+test('groupBy, countBy, sortBy, indexBy, keyBy should be callable on the collection instance', function (t) {
     var collection = new Collection([
         { id: 1, foo: 'baz', bar: 'baz' },
         { id: 2, foo: 'baz', bar: 'baz' },
     ]);
-    ['groupBy', 'countBy', 'sortBy', 'indexBy'].forEach(function (method) {
+    ['groupBy', 'countBy', 'sortBy', 'indexBy', 'keyBy'].forEach(function (method) {
         t.doesNotThrow(function () {
             collection[method]('foo');
         }, method + ' should be callable');
