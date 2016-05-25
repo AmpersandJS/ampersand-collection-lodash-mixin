@@ -12,9 +12,10 @@ This mixin adds the following lodash methods:
 
 ```
 countBy, difference, drop, each, every, filter, find, findWhere, first, 
-forEach, groupBy, includes, indexBy, indexOf, initial, invoke, isEmpty, last, 
-lastIndexOf, map, max, min, partition, pluck, reduce, reduceRight, reject, 
-rest, sample, shuffle, size, some, sortBy, take, where, without
+forEach, groupBy, includes, indexBy, indexOf, initial, invoke, invokeMap,
+isEmpty, keyBy, last, lastIndexOf, map, max, min, partition, pluck, reduce,
+reduceRight, reject, rest, sample, shuffle, size, some, sortBy, take,
+tail, where, without
 ```
 
 It weighs in at about `7.5kb` gzipped.
