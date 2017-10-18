@@ -29,6 +29,7 @@ var _ = {
     shuffle: require('lodash/shuffle'),
     some: require('lodash/some'),
     sortBy: require('lodash/sortBy'),
+    orderBy: require('lodash/orderBy'),
     tail: require('lodash/tail'),
     take: require('lodash/take'),
     without: require('lodash/without')
@@ -55,16 +56,16 @@ _.each(methods, function (method) {
 });
 
 // lodash methods that take a property name as an argument.
-var attributeMethods = ['groupBy', 'countBy', 'sortBy', 'keyBy'];
+var attributeMethods = ['groupBy', 'countBy', 'sortBy', 'keyBy', 'orderBy'];
 
 // Use attributes instead of properties.
 _.each(attributeMethods, function (method) {
     if (!_[method]) return;
-    mixins[method] = function (value, context) {
+    mixins[method] = function (value, context, additionalContext) {
         var iterator = isFunction(value) ? value : function (model) {
             return model.get ? model.get(value) : model[value];
         };
-        return _[method](this.models, iterator, context);
+        return _[method](this.models, iterator, context, additionalContext);
     };
 });
 
